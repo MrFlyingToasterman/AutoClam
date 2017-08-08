@@ -13,7 +13,7 @@ end
 # Update ClamAv
 def runUpdate
   puts "[INFO] Updating ClamDB"
-  #exec( "freshclam" )
+  system( "freshclam" )
 end
 
 # Lookup /etc/autoclam.target
@@ -44,3 +44,4 @@ end
 checkRoot
 runUpdate
 getPositions
+puts "Ready."
