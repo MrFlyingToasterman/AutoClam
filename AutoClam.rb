@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 puts "Welcome to AutoClam\n[INFO] Checking mashine with ClamAV"
 
+targetList = Array.new
+
 # Check Root
 def checkRoot
  if Process.euid != 0
@@ -22,6 +24,9 @@ def getPositions
   if File.exists?('/etc/autoclam.target')
     # File exists
     puts "[INFO] File exists\n[INFO] Loading targets"
+    targetList = File.foreach('/etc/autoclam.target').map { |line| line.split(' ') }
+    puts "[INFO] Choosen targets: " + targetList.inspect
+    return targetList
   else
     # File does not exist
     puts "[FAIL] File does not exist"
@@ -32,16 +37,21 @@ def getPositions
       f.write(data)
     end
     puts "[INFO] Wrote default configuration to /etc/autoclam.target"
+    exit
   end
 end
 
 # Start scan on targets
-def scan
-
+def runScan(targets)
+  repeter = 0
+  until repeter >= targets.length
+    puts targets[repeter]
+    repeter += 1
+  end
 end
 
 # Programm core
 checkRoot
 runUpdate
-getPositions
+runScan(getPositions)
 puts "Ready."
