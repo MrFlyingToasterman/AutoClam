@@ -31,7 +31,7 @@ def getPositions
     # File does not exist
     puts "[FAIL] File does not exist"
     # Stuff to write
-    data = "/bin\n/boot\n/opt\n/lib"
+    data = "/boot\n/usr/bin\n/sys\n/etc\n/opt\n/lib\n/var"
     # Create File
     File.open("/etc/autoclam.target", "w") do |f|
       f.write(data)
