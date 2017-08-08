@@ -1,10 +1,19 @@
 #!/usr/bin/env ruby
 puts "Welcome to AutoClam\n[INFO] Checking mashine with ClamAV"
 
+# Check Root
+def checkRoot
+ if Process.euid != 0
+   # Not running as user root
+   puts "Please run this script as root!"
+   exit
+ end
+end
+
 # Update ClamAv
 def runUpdate
   puts "[INFO] Updating ClamDB"
-  #exec( "sudo freshclam" )
+  #exec( "freshclam" )
 end
 
 # Lookup /etc/autoclam.target
@@ -32,5 +41,6 @@ def scan
 end
 
 # Programm core
+checkRoot
 runUpdate
 getPositions
