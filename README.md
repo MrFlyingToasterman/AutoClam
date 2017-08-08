@@ -4,6 +4,7 @@ An automation for ClamAV written in Ruby.
 # How to use
 Just run the AutoClam.rb via `$ sudo ruby AutoClam.rb` <br>
 Config Files are located in `/etc/autoclam.target` <br>
+I you dont want to update the ClamAVDB just run the programm via `$ sudo ruby AutoClam --no-update`
 
 # Default configuration
 /etc/autoclam.target
