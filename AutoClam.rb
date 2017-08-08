@@ -45,7 +45,10 @@ end
 def runScan(targets)
   repeter = 0
   until repeter >= targets.length
-    system("clamscan -r " + targets[repeter][0] + " -l /var/log" + targets[repeter][0] + "_scan.log")
+    # Execute scan commands
+    puts "[INFO] Saving log to: /var/log" + targets[repeter][0] + "_scan.log"
+    system("clamscan -r " + targets[repeter][0] + " -l /var/log" + targets[repeter][0] + "_scan.log |grep \"FOUND\" >> Found_Malware.txt ")
+    # Uppin' counter
     repeter += 1
   end
 end
