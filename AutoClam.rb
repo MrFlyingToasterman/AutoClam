@@ -45,7 +45,7 @@ end
 def runScan(targets)
   repeter = 0
   until repeter >= targets.length
-    puts targets[repeter]
+    system("clamscan -r " + targets[repeter][0] + " -l /var/log" + targets[repeter][0] + "_scan.log")
     repeter += 1
   end
 end
@@ -54,4 +54,4 @@ end
 checkRoot
 runUpdate
 runScan(getPositions)
-puts "Ready."
+puts "\nReady."
