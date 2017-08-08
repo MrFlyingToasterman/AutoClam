@@ -13,9 +13,14 @@ def checkRoot
 end
 
 # Update ClamAv
-def runUpdate
-  puts "[INFO] Updating ClamDB"
-  system( "freshclam" )
+def runUpdate(updatecheck)
+  # Check if updates are wanted
+  if updatecheck != "--no-update"
+    puts "[INFO] Updating ClamDB"
+    system( "freshclam" )
+  else
+    puts "[INFO] Skipped updating ClamDB"
+  end
 end
 
 # Lookup /etc/autoclam.target
@@ -55,6 +60,6 @@ end
 
 # Programm core
 checkRoot
-runUpdate
+runUpdate(ARGV[0])
 runScan(getPositions)
 puts "\nReady."
