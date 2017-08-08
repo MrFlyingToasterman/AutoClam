@@ -8,10 +8,13 @@ Config Files are located in `/etc/autoclam.target` <br>
 # Default configuration
 /etc/autoclam.target
 ```
-/bin
 /boot
+/usr/bin
+/sys
+/etc
 /opt
 /lib
+/var
 ```
 One line per file path!
 
